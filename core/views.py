@@ -35,21 +35,25 @@ def home(request):
                     titulos = list()
                     for i in nova_lista:
                         page = browser.new_page(user_agent=ua.random)
-                        page.goto(i)                        
-                        page.evaluate('window.scrollTo(0,4200)')
+                        page.goto(i)
+                        sleep(3)                        
+                        page.evaluate('window.scrollTo(0,600)')
+                        sleep(3)
+                        page.evaluate('window.scrollTo(0,600)')
+
                         titulos.append(page.title())
-                        print(titulos)
-                        sleep(5)
-                        try:
-                            banner = page.locator(f'//ins[contains(@data-revive-seq,"{randint(0,1)}")]/iframe')
-                            page.goto(banner.get_attribute('src'))
-                            page.evaluate('javascript:window.open(window.clickTag)')
-                        except:
-                            pass
+                      
+                        # try:
+                        #     banner = page.locator(f'//ins[contains(@data-revive-seq,"{randint(0,1)}")]/iframe')
+                        #     page.goto(banner.get_attribute('src'))
+                        #     page.evaluate('javascript:window.open(window.clickTag)')
+                        # except:
+                        #     pass
 
                     print(len(titulos))
             resultado = Parallel(n_jobs=-1)(delayed(calcular)(arquivo) for arquivo in range(valor))
             print(resultado)
             print(f"Demorou:{time.time() - tempo_inicial}")
+
     return render(request,'index.html')
 
