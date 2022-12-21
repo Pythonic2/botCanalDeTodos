@@ -26,7 +26,7 @@ SECRET_KEY ='django-insecure-7#jd4)ok^()^+ajmw379*dpjmny!b+7y4*7f%7!c^hqdc$8c+z'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['bot-canal-povo.herokuapp.com/']
+ALLOWED_HOSTS = ['bot-canal-povo.herokuapp.com']
 
 
 # Application definition
