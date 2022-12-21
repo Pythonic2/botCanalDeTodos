@@ -55,8 +55,11 @@ def home(request):
 
                     print(len(titulos))
             resultado = Parallel(n_jobs=2)(delayed(calcular)(arquivo) for arquivo in range(valor))
-           
             print(f"Demorou:{time.time() - tempo_inicial}")
 
     return render(request,'index.html')
+
+
+
+
 
