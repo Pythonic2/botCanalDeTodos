@@ -34,17 +34,14 @@ def home(request):
                     
                     lista = page.query_selector_all("//div[contains(text(),'Últimas notícias')]/../div/div/h3/a")
                     nova_lista = [i.get_attribute('href') for i in lista ]
-                    titulos = list()
-                    for i in nova_lista:
-                        print('Abrindo Sessões...')
-                        page = browser.new_page(user_agent=ua.random)
-                        page.goto(i)
-                        sleep(3)                        
-                        page.evaluate('window.scrollTo(0,600)')
-                        sleep(3)
-                        page.evaluate('window.scrollTo(0,600)')
+                    
+                    for i in nova_lista:    
+                        print('Abrindo mais uma aba')
+                        page.evaluate(f"window.open('{i}', '_blank')")
+                        sleep(4)                        
+                        
 
-                        titulos.append(page.title())
+                        
                       
                         # try:
                         #     banner = page.locator(f'//ins[contains(@data-revive-seq,"{randint(0,1)}")]/iframe')
@@ -53,7 +50,7 @@ def home(request):
                         # except:
                         #     pass
 
-                    print(len(titulos))
+                  
             resultado = Parallel(n_jobs=2)(delayed(calcular)(arquivo) for arquivo in range(valor))
             print(f"Demorou:{time.time() - tempo_inicial}")
 
