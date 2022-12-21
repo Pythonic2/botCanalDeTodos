@@ -56,7 +56,7 @@ def home(request):
                         #     pass
 
                     print(len(titulos))
-            resultado = Parallel(n_jobs=-1)(delayed(calcular)(arquivo) for arquivo in range(valor))
+            resultado = Parallel(n_jobs=2)(delayed(calcular)(arquivo) for arquivo in range(valor))
             print(resultado)
             print(f"Demorou:{time.time() - tempo_inicial}")
 
