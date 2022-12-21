@@ -29,7 +29,7 @@ def home(request):
 
                 with sync_playwright() as p:
                     print('Iniciando os Acessos...')
-                    browser = p.chromium.launch()
+                    browser = p.chromium.launch(headless=False)
                     ua = UserAgent()
                     page = browser.new_page(user_agent=ua.random)
                     
