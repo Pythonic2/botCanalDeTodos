@@ -21,14 +21,11 @@ def home(request):
         pass
     else:
         valor = int(v)
-        
         if request.method == 'POST':
-            
+    
             def calcular(arquivo):
-               
-
                 with sync_playwright() as p:
-                    print('Iniciando os Acessos...')
+                    
                     browser = p.chromium.launch(headless=True,chromium_sandbox=False)
                     ua = UserAgent()
                     page = browser.new_page(user_agent=ua.random)
@@ -39,6 +36,7 @@ def home(request):
                     nova_lista = [i.get_attribute('href') for i in lista ]
                     titulos = list()
                     for i in nova_lista:
+                        print('Abrindo Sessões...')
                         page = browser.new_page(user_agent=ua.random)
                         page.goto(i)
                         sleep(3)                        
@@ -57,7 +55,7 @@ def home(request):
 
                     print(len(titulos))
             resultado = Parallel(n_jobs=2)(delayed(calcular)(arquivo) for arquivo in range(valor))
-            print(resultado)
+           
             print(f"Demorou:{time.time() - tempo_inicial}")
 
     return render(request,'index.html')
