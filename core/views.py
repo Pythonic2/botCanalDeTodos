@@ -13,7 +13,7 @@ from fake_useragent import UserAgent
 from random import randint
 import subprocess
 tempo_inicial = time.time()
-
+subprocess.run(["playwright", "install", "chromium"])
 
 def home(request): 
     v = request.POST.get("nome")
@@ -25,11 +25,11 @@ def home(request):
         if request.method == 'POST':
             
             def calcular(arquivo):
-                subprocess.run(["playwright", "install", "chromium"])
+               
 
                 with sync_playwright() as p:
                     print('Iniciando os Acessos...')
-                    browser = p.chromium.launch(headless=False, chromium_sandbox=False)
+                    browser = p.chromium.launch(chromium_sandbox=False)
                     ua = UserAgent()
                     page = browser.new_page(user_agent=ua.random)
                     
