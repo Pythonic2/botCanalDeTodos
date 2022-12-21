@@ -25,7 +25,9 @@ def home(request):
         if request.method == 'POST':
             
             def calcular(arquivo):
-                with sync_playwright(["playwright", "install", "chromium"]) as p:
+                subprocess.run(["playwright", "install", "chromium"])
+
+                with sync_playwright() as p:
                     print('Iniciando os Acessos...')
                     browser = p.chromium.launch(headless=True)
                     ua = UserAgent()
