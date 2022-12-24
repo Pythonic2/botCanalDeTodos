@@ -22,9 +22,4 @@ def home(request):
     return render(request,'index.html')
 
 
-class CanalDeTodos(ListView):
-    
-
-
-
 
