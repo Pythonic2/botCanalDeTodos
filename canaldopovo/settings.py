@@ -28,7 +28,7 @@ DEBUG = True
 
 #ALLOWED_HOSTS = ['intense-shore-06159.herokuapp.com']
 #ALLOWED_HOSTS=['solucoesroboticas.com.br']
-ALLOWED_HOSTS=[]
+ALLOWED_HOSTS=['acessos-automaticos-canal.herokuapp.com']
 # Application definition
 
 INSTALLED_APPS = [
