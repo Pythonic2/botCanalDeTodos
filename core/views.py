@@ -43,7 +43,7 @@ def home(request):
                             print(i)
                             vazia.append(await page.title())
                             await page.evaluate('window.scrollTo(0,600)')
-                            # sleep(randint(20, tempo_por_page))
+                            sleep(randint(20, tempo_por_page))
                             await page.close()
 
             asyncio.run(main())
