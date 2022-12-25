@@ -43,10 +43,11 @@ def home(request):
                             print(i)
                             vazia.append(await page.title())
                             await page.evaluate('window.scrollTo(0,600)')
-                            sleep(randint(20, tempo_por_page))
+                            # sleep(randint(20, tempo_por_page))
                             await page.close()
 
             asyncio.run(main())
             return render(request, 'index.html', mostrar)
     mostrar = {'mostrar':'d-none'}
     return render(request,'index.html',mostrar)
+

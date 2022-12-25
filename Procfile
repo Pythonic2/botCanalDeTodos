@@ -1,1 +1,1 @@
-web: gunicorn canaldopovo.wsgi
+web: gunicorn canaldopovo.wsgi --timeout 172800
