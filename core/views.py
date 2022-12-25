@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,HTTPStatus
 import time
 from fake_useragent import UserAgent
 from random import randint
@@ -45,6 +45,8 @@ def home(request):
                             await page.evaluate('window.scrollTo(0,600)')
                             sleep(randint(20, tempo_por_page))
                             await page.close()
+                            print(status_code=HTTPStatus.UNAVAILABLE_FOR_LEGAL_REASONS)
+
 
             asyncio.run(main())
             return render(request, 'index.html', mostrar)
