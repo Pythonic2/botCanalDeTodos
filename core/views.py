@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect,HTTPStatus
+from django.shortcuts import render,redirect
 import time
 from fake_useragent import UserAgent
 from random import randint
