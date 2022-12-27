@@ -31,6 +31,7 @@ def home(request):
                     browser = await p.chromium.launch(headless=True)
                     ua = UserAgent()
                     page = await browser.new_page(user_agent=ua.random)
+                    page.set_default_timeout(0)
                     await page.goto("https://www.canaldopovo.com/")
                     print(await page.title())
                     lista = await page.query_selector_all("//div[contains(text(),'Últimas notícias')]/../div/div/h3/a")
@@ -42,7 +43,7 @@ def home(request):
                             await page.goto(i)
                             print(i)
                             vazia.append(await page.title())
-                            await page.evaluate('window.scrollTo(0,600)')
+                            #await page.evaluate('window.scrollTo(0,600)')
                             sleep(randint(20, tempo_por_page))
                             await page.close()
 
@@ -52,3 +53,4 @@ def home(request):
     mostrar = {'mostrar':'d-none'}
     return render(request,'index.html',mostrar)
 
+3
