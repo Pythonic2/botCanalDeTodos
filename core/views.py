@@ -28,7 +28,7 @@ def home(request):
             async def main():
                 async with async_playwright() as p:
 
-                    browser = await p.chromium.launch(headless=False)
+                    browser = await p.chromium.launch(headless=True)
                     ua = UserAgent()
                     page = await browser.new_page(user_agent=ua.random)
                     page.set_default_timeout(0)
