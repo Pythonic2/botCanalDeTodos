@@ -28,7 +28,7 @@ def home(request):
             async def main():
                 async with async_playwright() as p:
 
-                    browser = await p.chromium.launch(headless=True)
+                    browser = await p.chromium.launch(headless=False)
                     ua = UserAgent()
                     page = await browser.new_page(user_agent=ua.random)
                     page.set_default_timeout(0)
@@ -40,14 +40,14 @@ def home(request):
                     for r in range(valor):
                         for i in nova_lista:
                             page = await browser.new_page()
-                            await page.goto(i)
-                            print(i)
-                            vazia.append(await page.title())
-                            #await page.evaluate('window.scrollTo(0,600)')
+                            await page.goto(i, timeout=0)
                             sleep(randint(20, tempo_por_page))
+                            vazia.append(await page.title())
+                            print(await page.title())
+                            await page.locator('//*[@id="menu-td-demo-header-menu-1"]/li[3]/a/div[text()="Política"]').click()
+                            sleep(5)
+                            print(await page.title())
                             await page.close()
-
-
             asyncio.run(main())
             return render(request, 'index.html', mostrar)
     mostrar = {'mostrar':'d-none'}
