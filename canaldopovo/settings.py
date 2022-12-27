@@ -28,8 +28,8 @@ DEBUG = True
 
 
 
-ALLOWED_HOSTS=['acessos-automaticos-canal.herokuapp.com']
-#ALLOWED_HOSTS=[]
+#ALLOWED_HOSTS=['acessos-automaticos-canal.herokuapp.com']
+ALLOWED_HOSTS=[]
 
 # Application definition
 

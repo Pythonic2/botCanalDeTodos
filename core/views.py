@@ -24,6 +24,8 @@ def home(request):
         valor = int(v)
         tempo_por_page = int(s)
         if request.method == 'POST':
+            menu = ['Fé','Cotidiano','Início','Política','Brasil','Mundo','Tecnologia','Esportes','Entretenimento','Opinião']
+           
             mostrar = {'mostrar':' '}
             async def main():
                 async with async_playwright() as p:
@@ -44,7 +46,8 @@ def home(request):
                             sleep(randint(20, tempo_por_page))
                             vazia.append(await page.title())
                             print(await page.title())
-                            await page.locator('//*[@id="menu-td-demo-header-menu-1"]/li[3]/a/div[text()="Política"]').click()
+                            
+                            await page.locator(f"//div[contains(@class,'td-pb-span8')]//a/div[text()='{menu[randint(0,10)]}']").click()
                             sleep(5)
                             print(await page.title())
                             await page.close()
